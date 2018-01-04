@@ -27,6 +27,7 @@
                 .get("/api/blogpost")
                 .success(function(posts){
                     $scope.posts = posts;
+                    $scope.post = {};
                 })
         }
         function editPost(postID){
