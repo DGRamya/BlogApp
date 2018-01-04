@@ -8,17 +8,40 @@
 
     function BlogController($scope,$http){
         $scope.createPost = createPost;
+        $scope.deletePost = deletePost;
+        $scope.editPost = editPost;
+        $scope.updatePost = updatePost;
 
         function init(){
             getAllPosts();
         }
         init();
+        function updatePost(post){
+            $http
+                .put("/api/blogpost/"+post._id,post)
+                .success(getAllPosts);
+
+        }
         function getAllPosts(){
             $http
                 .get("/api/blogpost")
                 .success(function(posts){
                     $scope.posts = posts;
                 })
+        }
+        function editPost(postID){
+            $http
+                .get("/api/blogpost/"+postID)
+                .success(function(post){
+                    $scope.post = post;
+                });
+
+
+        }
+        function deletePost(postID){
+            $http
+                .delete("/api/blogpost/"+postID)
+                .success(getAllPosts);
         }
 
         function createPost(post){
