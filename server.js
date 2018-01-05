@@ -19,7 +19,7 @@ var app = express();
 
     if(process.env.MLAB_USERNAME) {
         console.log(process.env.MLAB_USERNAME + "Inside");
-        connectionString = process.env.MLAB_USERNAME + ":" +
+        connectionString = "mongodb://"+process.env.MLAB_USERNAME + ":" +
             process.env.MLAB_PASSWORD + "@" +
             process.env.MLAB_HOST + ':' +
             process.env.MLAB_PORT + '/' +
