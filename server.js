@@ -12,8 +12,22 @@ var app = express();
 
     //connect to mongoDB
     var mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost/myBlogApp');
+  //  mongoose.connect('mongodb://localhost/myBlogApp');
 
+    var connectionString = 'mongodb://localhost/myBlogApp';
+
+    if(process.env.MLAB_USERNAME) {
+        connectionString = process.env.MLAB_USERNAME + ":" +
+            process.env.MLAB_PASSWORD + "@" +
+            process.env.MLAB_HOST + ':' +
+            process.env.MLAB_PORT + '/' +
+            process.env.MLAB_APP_NAME;
+    }
+
+    mongoose.connect(connectionString, function (err, db) {
+        if(err){
+        }
+    });
     //create schema to store the data
     var postSchema = mongoose.Schema({
         title : {type: String, required: true},
@@ -120,6 +134,6 @@ var app = express();
     //require("./server/app.js")(app);
 
 
-var port =  3000;
+var port = process.env.PORT || 3000;
 
 app.listen(port);
