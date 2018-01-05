@@ -14,7 +14,7 @@ var app = express();
     var mongoose = require('mongoose');
   //  mongoose.connect('mongodb://localhost/myBlogApp');
 
-    var connectionString = 'mongodb://localhost/myBlogApp';
+    var connectionString = 'mongodb://127.0.0.1:27017/myBlogApp';
 
     if(process.env.MLAB_USERNAME) {
         connectionString = process.env.MLAB_USERNAME + ":" +
