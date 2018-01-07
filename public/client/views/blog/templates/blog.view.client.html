@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Hello World! from Mean Blog</h1>
+    <input ng-model="model.post.title" class="form-control" placeholder="title"/>
+    <textarea ng-model="model.post.body" class="form-control" placeholder="body"></textarea>
+    <button ng-click="model.createPost(model.post)" class="btn btn-primary btn-block">post</button>
+    <button ng-click="model.updatePost(model.post)" class="btn btn-success btn-block">update</button>
+    <div ng-repeat="post in model.posts">
+        <h2>{{post.title}}
+            <a ng-click="model.editPost(post._id)" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+            <br>
+            <a ng-click="model.deletePost(post._id)" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+        </h2>
+        <em>{{post.posted}}</em>
+        <p>
+            {{post.body}}
+
+        </p>
+    </div>
+</div>
